@@ -1,0 +1,53 @@
+{
+	"name": "whatsapp-chatgpt",
+	"version": "1.0.0",
+	"description": "بوت واتس اب مع chatGPT و Dall-E",
+	"main": "src/index.ts",
+	"author": "محمد المطيري",
+	"scripts": {
+		"build": "tsc",
+		"start": "npx vite-node src/index.ts",
+		"prettier": "prettier --write ."
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@clack/prompts": "^0.4.3",
+		"aws-sdk": "^2.1332.0",
+		"axios": "^1.3.5",
+		"chatgpt-official": "^1.1.5",
+		"coffeescript": "^2.7.0",
+		"country-list": "^2.3.0",
+		"debug": "^4.3.4",
+		"dotenv": "^16.0.3",
+		"esm": "^3.2.25",
+		"fetch-blob": "^3.2.0",
+		"ffmpeg": "^0.0.4",
+		"form-data": "^4.0.0",
+		"franc": "^6.1.0",
+		"i18n-iso-countries": "^7.6.0",
+		"lang-detector": "^1.0.6",
+		"language-detect": "^1.1.0",
+		"lingua": "^0.4.0",
+		"ocr-space-api": "^1.0.1",
+		"ocr-space-api-wrapper": "^2.2.0",
+		"openai": "^3.1.0",
+		"pdf-lib": "^1.17.1",
+		"pdf.js": "^0.1.0",
+		"pdfjs-dist": "^3.5.141",
+		"picocolors": "^1.0.0",
+		"qrcode-terminal": "^0.12.0",
+		"tmp": "^0.2.1",
+		"ts-node": "^10.6.0",
+		"typescript": "^4.6.0",
+		"vite": "^4.2.2",
+		"whatsapp-web.js": "^1.19.5"
+	},
+	"devDependencies": {
+		"@types/fluent-ffmpeg": "^2.1.21",
+		"@types/qrcode-terminal": "^0.12.0",
+		"prettier": "^2.8.4"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}

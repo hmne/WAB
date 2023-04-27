@@ -1,0 +1,30 @@
+2023/04/27-05:22:48.172 7c03 Reusing MANIFEST /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/27-05:22:48.173 7c03 Recovering log #1694
+2023/04/27-05:22:48.277 7c03 Reusing old log /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001694.log 
+2023/04/27-05:23:01.287 18b47 Level-0 table #1708: started
+2023/04/27-05:23:01.322 18b47 Level-0 table #1708: 1324610 bytes OK
+2023/04/27-05:23:01.352 18b47 Delete type=0 #1694
+2023/04/27-05:23:01.746 18b47 Compacting 1@1 + 10@2 files
+2023/04/27-05:23:01.798 18b47 Generated table #1709@1: 11201 keys, 2156178 bytes
+2023/04/27-05:23:01.839 18b47 Generated table #1710@1: 1188 keys, 2143699 bytes
+2023/04/27-05:23:01.909 18b47 Generated table #1711@1: 37800 keys, 2221821 bytes
+2023/04/27-05:23:01.992 18b47 Generated table #1712@1: 95038 keys, 2247316 bytes
+2023/04/27-05:23:02.095 18b47 Generated table #1713@1: 98347 keys, 2250106 bytes
+2023/04/27-05:23:02.213 18b47 Generated table #1714@1: 90820 keys, 2351341 bytes
+2023/04/27-05:23:02.265 18b47 Generated table #1715@1: 9364 keys, 2398611 bytes
+2023/04/27-05:23:02.366 18b47 Generated table #1716@1: 82251 keys, 2227665 bytes
+2023/04/27-05:23:02.471 18b47 Generated table #1717@1: 103820 keys, 2255341 bytes
+2023/04/27-05:23:02.507 18b47 Generated table #1718@1: 21891 keys, 544668 bytes
+2023/04/27-05:23:02.507 18b47 Compacted 1@1 + 10@2 files => 20796746 bytes
+2023/04/27-05:23:02.531 18b47 compacted to: files[ 0 0 10 0 0 0 0 ]
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1696
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1697
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1708
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1699
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1698
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1705
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1704
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1700
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1701
+2023/04/27-05:23:02.532 18b47 Delete type=2 #1703
+2023/04/27-05:23:02.533 18b47 Delete type=2 #1702
