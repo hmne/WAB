@@ -1,24 +1,3 @@
-2023/05/04-07:57:07.548 aa03 Reusing MANIFEST /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/05/04-07:57:07.548 aa03 Recovering log #275
-2023/05/04-07:57:07.634 aa03 Reusing old log /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000275.log 
-2023/05/04-07:57:28.268 1d403 Level-0 table #286: started
-2023/05/04-07:57:28.307 1d403 Level-0 table #286: 1508144 bytes OK
-2023/05/04-07:57:28.340 1d403 Delete type=0 #275
-2023/05/04-07:58:01.096 e503 Compacting 1@1 + 7@2 files
-2023/05/04-07:58:01.151 e503 Generated table #287@1: 11471 keys, 2160402 bytes
-2023/05/04-07:58:01.186 e503 Generated table #288@1: 1591 keys, 2132898 bytes
-2023/05/04-07:58:01.260 e503 Generated table #289@1: 50239 keys, 2230170 bytes
-2023/05/04-07:58:01.340 e503 Generated table #290@1: 51007 keys, 2295555 bytes
-2023/05/04-07:58:01.406 e503 Generated table #291@1: 57321 keys, 2192275 bytes
-2023/05/04-07:58:01.498 e503 Generated table #292@1: 100831 keys, 2253473 bytes
-2023/05/04-07:58:01.558 e503 Generated table #293@1: 59727 keys, 1341576 bytes
-2023/05/04-07:58:01.558 e503 Compacted 1@1 + 7@2 files => 14606349 bytes
-2023/05/04-07:58:01.587 e503 compacted to: files[ 0 0 7 0 0 0 0 ]
-2023/05/04-07:58:01.588 e503 Delete type=2 #277
-2023/05/04-07:58:01.588 e503 Delete type=2 #282
-2023/05/04-07:58:01.588 e503 Delete type=2 #283
-2023/05/04-07:58:01.588 e503 Delete type=2 #281
-2023/05/04-07:58:01.588 e503 Delete type=2 #280
-2023/05/04-07:58:01.588 e503 Delete type=2 #278
-2023/05/04-07:58:01.588 e503 Delete type=2 #279
-2023/05/04-07:58:01.588 e503 Delete type=2 #286
+2023/05/04-20:51:12.760 9503 Reusing MANIFEST /Users/netstorm/Desktop/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/04-20:51:12.760 9503 Recovering log #483
+2023/05/04-20:51:12.769 9503 Reusing old log /Users/netstorm/Desktop/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000483.log 

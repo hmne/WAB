@@ -1,15 +1,10 @@
-import debug from "debug";
-const log = debug("text-extraction");
 import { getDocument, GlobalWorkerOptions } from "pdfjs-dist/legacy/build/pdf";
 import { config } from "dotenv";
 import { recognizeImage } from './ocrSpaceApi';
 import { franc } from 'franc';
 
 config();
-//GlobalWorkerOptions.workerSrc = "pdf.worker.min.js";
-
 async function extractTextFromImage(imageBuffer: Buffer): Promise<string> {
-  log("Running extractTextFromImage...");
   const response = await recognizeImage(imageBuffer, 'ara');
   const text = response.ParsedResults[0].ParsedText;
   //console.log("Text extracted from image:", text);
@@ -17,7 +12,6 @@ async function extractTextFromImage(imageBuffer: Buffer): Promise<string> {
 }
 
 async function extractTextFromPdf(pdfBuffer: Buffer): Promise<string> {
-  log("Running extractTextFromPdf...");
   const uint8ArrayData = new Uint8Array(pdfBuffer.buffer);
   const pdfDocument = await getDocument({ data: uint8ArrayData }).promise;
   const numPages = pdfDocument.numPages;
@@ -33,12 +27,8 @@ async function extractTextFromPdf(pdfBuffer: Buffer): Promise<string> {
 }
 
 async function detectLanguage(text: string): Promise<string> {
-  log("Running detectLanguage...");
   const langCode = franc(text);
   return langCode;
 }
 
 export { extractTextFromImage, extractTextFromPdf, detectLanguage };
-
-
-//import { getDocument } from "pdfjs-dist/legacy/build/pdf";

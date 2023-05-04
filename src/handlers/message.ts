@@ -1,16 +1,14 @@
-import defaultLanguage from "./settings";
-import { getLanguage } from "./languages";
 import { startsWithIgnoreCase } from "../utils";
 import { Message, Client } from 'whatsapp-web.js';
 import MessageCollector from "./MessageCollector";
-//import { parseDate, isValidDate } from './userUtils';
 import * as PDFJS from "pdfjs-dist/legacy/build/pdf";
 import { searchFlights } from "../features/skyscanner";
-//import { isCountryOrCodeValid, isDateFormatValid, handleFlightRequest } from "./userUtils";
-import { handleIncomingMessage as handleIncomingMessageLanguage } from "./languages";
 import { extractTextFromImage, extractTextFromPdf, detectLanguage } from "../features/text-extraction";
-import { parseDate, isValidDate, getCountryCode,isCountryOrCodeValid, isDateFormatValid, handleFlightRequest, flightRegex, arLang } from "./userUtils";
-
+import 
+      { parseDate, isValidDate, getCountryCode, 
+        isCountryOrCodeValid, isDateFormatValid, 
+        handleFlightRequest, flightRegex, arLang
+       } from "./userUtils";
 
 // Config & Constants
 import config from "../config";
@@ -39,12 +37,38 @@ function createUniqueId(senderId: string): string {
 
 const conversations: { [key: string]: any } = {};
 
+
+
+const settings = {
+  defaultLanguage: "ar" as "ar" | "en",
+};
+
+const activationKeyword = 'بوت';
+const requestKeyword = 'حلل';
+
+const hasActivationKeyword = (message: Message) => {
+  return message.body.includes(activationKeyword);
+};
+
+const hasRequestKeyword = (message: Message) => {
+  return message.body.includes(requestKeyword);
+};
+
+const sendActivationMessage = async (message: Message) => {
+  await message.reply("تم تفعيل البوت. الآن يمكنك إرسال كلمة 'حلل' لمعالجة الرسالة.");
+};
+
+const sendReminderMessage = async (message: Message) => {
+  await message.reply("يرجى إرسال كلمة 'بوت' لتفعيل البوت قبل إرسال كلمة 'حلل'.");
+};
+
+
 // Handles message
 async function handleIncomingMessage(message: Message, client: Client) {
   const senderId = message.from;
   const userUniqueId = createUniqueId(senderId);
   const messageString = message.body.trim();
-  console.log(`◇ البوت وصلة مسج من ${senderId}: ${messageString}`);
+  //console.log(`◇ البوت وصلة مسج من ${senderId}: ${messageString}`);
 
   if (messageString.startsWith(".رحله")) {
     if (messageString === '.رحله') {
@@ -136,24 +160,32 @@ async function handleIncomingMessage(message: Message, client: Client) {
         await message.reply(errorMessage);
       }
     }
-  } else {
-    console.log(`◇ البوت تلقى رسالة غير متوقعة من ${senderId}: ${messageString}`);
-  }
+  } //else {
+    //console.log(`◇ البوت تلقى رسالة غير متوقعة من ${senderId}: ${messageString}`);
+  //}
+
+  if (hasActivationKeyword(message) || hasRequestKeyword(message)) {
+  let media;
 
   if (message.hasMedia) {
-    const media = await message.downloadMedia();
-    console.log(`◇ البوت تلقى وسائط من ${senderId}: ${media.mimetype}`);
-    const language = getLanguage(message.body, { defaultLanguage: "ar" });
-    console.log(`◇ البوت حدد اللغة: ${language.code}`);
-    if (
-      message.body.includes(language.activationKeyword) ||
-      message.body.includes(language.requestKeyword)
-    ) {
+    media = await message.downloadMedia();
+  } else if (message.hasQuotedMsg) {
+    const quotedMessage = await message.getQuotedMessage();
+    if (quotedMessage.hasMedia) {
+      media = await quotedMessage.downloadMedia();
+    } else {
+      return; // إنهاء التنفيذ إذا لم تكن هناك وسائط في الرسالة المقتبسة
+    }
+  }
+  if (media) {
+      console.log(`◇ البوت تلقى وسائط من ${senderId}: ${media.mimetype}`);  
+
       if (media.mimetype.startsWith("image/")) {
         console.log(`◇ البوت يستخرج النص من الصورة لـ ${senderId}`);
         const extractedText = await extractTextFromImage(Buffer.from(media.data, "base64"));
         console.log(`◇ البوت استخرج النص من الصورة لـ ${senderId}: ${extractedText}`);
         const detectedLanguage = await detectLanguage(extractedText);
+        console.log(`◇ البوت حدد اللغة: ${detectedLanguage}`);
         message.reply(`تم استخراج النص من الصورة:\n${extractedText} \n(اللغة: ${detectedLanguage})`);
         return;
       } else if (media.mimetype === "application/pdf") {
@@ -161,8 +193,8 @@ async function handleIncomingMessage(message: Message, client: Client) {
         const extractedText = await extractTextFromPdf(Buffer.from(media.data, "base64"));
         console.log(`◇ البوت استخرج النص من ملف PDF لـ ${senderId}: ${extractedText}`);
         const detectedLanguage = await detectLanguage(extractedText);
-        message.reply(`تم استخراج النص من الملف PDF: ${extractedText} (اللغة: ${detectedLanguage})`
-        );
+        console.log(`◇ البوت حدد اللغة: ${detectedLanguage}`);
+        message.reply(`تم استخراج النص من الملف PDF: ${extractedText} (اللغة: ${detectedLanguage})`);
         return;
       }
     }
