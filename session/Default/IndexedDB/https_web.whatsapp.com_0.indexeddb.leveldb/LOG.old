@@ -1,30 +1,24 @@
-2023/04/27-05:22:48.172 7c03 Reusing MANIFEST /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/27-05:22:48.173 7c03 Recovering log #1694
-2023/04/27-05:22:48.277 7c03 Reusing old log /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001694.log 
-2023/04/27-05:23:01.287 18b47 Level-0 table #1708: started
-2023/04/27-05:23:01.322 18b47 Level-0 table #1708: 1324610 bytes OK
-2023/04/27-05:23:01.352 18b47 Delete type=0 #1694
-2023/04/27-05:23:01.746 18b47 Compacting 1@1 + 10@2 files
-2023/04/27-05:23:01.798 18b47 Generated table #1709@1: 11201 keys, 2156178 bytes
-2023/04/27-05:23:01.839 18b47 Generated table #1710@1: 1188 keys, 2143699 bytes
-2023/04/27-05:23:01.909 18b47 Generated table #1711@1: 37800 keys, 2221821 bytes
-2023/04/27-05:23:01.992 18b47 Generated table #1712@1: 95038 keys, 2247316 bytes
-2023/04/27-05:23:02.095 18b47 Generated table #1713@1: 98347 keys, 2250106 bytes
-2023/04/27-05:23:02.213 18b47 Generated table #1714@1: 90820 keys, 2351341 bytes
-2023/04/27-05:23:02.265 18b47 Generated table #1715@1: 9364 keys, 2398611 bytes
-2023/04/27-05:23:02.366 18b47 Generated table #1716@1: 82251 keys, 2227665 bytes
-2023/04/27-05:23:02.471 18b47 Generated table #1717@1: 103820 keys, 2255341 bytes
-2023/04/27-05:23:02.507 18b47 Generated table #1718@1: 21891 keys, 544668 bytes
-2023/04/27-05:23:02.507 18b47 Compacted 1@1 + 10@2 files => 20796746 bytes
-2023/04/27-05:23:02.531 18b47 compacted to: files[ 0 0 10 0 0 0 0 ]
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1696
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1697
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1708
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1699
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1698
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1705
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1704
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1700
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1701
-2023/04/27-05:23:02.532 18b47 Delete type=2 #1703
-2023/04/27-05:23:02.533 18b47 Delete type=2 #1702
+2023/05/04-07:57:07.548 aa03 Reusing MANIFEST /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/04-07:57:07.548 aa03 Recovering log #275
+2023/05/04-07:57:07.634 aa03 Reusing old log /Users/netstorm/whatsapp-chatgpt/whatsapp-chatGPT/WAB/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000275.log 
+2023/05/04-07:57:28.268 1d403 Level-0 table #286: started
+2023/05/04-07:57:28.307 1d403 Level-0 table #286: 1508144 bytes OK
+2023/05/04-07:57:28.340 1d403 Delete type=0 #275
+2023/05/04-07:58:01.096 e503 Compacting 1@1 + 7@2 files
+2023/05/04-07:58:01.151 e503 Generated table #287@1: 11471 keys, 2160402 bytes
+2023/05/04-07:58:01.186 e503 Generated table #288@1: 1591 keys, 2132898 bytes
+2023/05/04-07:58:01.260 e503 Generated table #289@1: 50239 keys, 2230170 bytes
+2023/05/04-07:58:01.340 e503 Generated table #290@1: 51007 keys, 2295555 bytes
+2023/05/04-07:58:01.406 e503 Generated table #291@1: 57321 keys, 2192275 bytes
+2023/05/04-07:58:01.498 e503 Generated table #292@1: 100831 keys, 2253473 bytes
+2023/05/04-07:58:01.558 e503 Generated table #293@1: 59727 keys, 1341576 bytes
+2023/05/04-07:58:01.558 e503 Compacted 1@1 + 7@2 files => 14606349 bytes
+2023/05/04-07:58:01.587 e503 compacted to: files[ 0 0 7 0 0 0 0 ]
+2023/05/04-07:58:01.588 e503 Delete type=2 #277
+2023/05/04-07:58:01.588 e503 Delete type=2 #282
+2023/05/04-07:58:01.588 e503 Delete type=2 #283
+2023/05/04-07:58:01.588 e503 Delete type=2 #281
+2023/05/04-07:58:01.588 e503 Delete type=2 #280
+2023/05/04-07:58:01.588 e503 Delete type=2 #278
+2023/05/04-07:58:01.588 e503 Delete type=2 #279
+2023/05/04-07:58:01.588 e503 Delete type=2 #286
