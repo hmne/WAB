@@ -1,10 +1,11 @@
 import defaultLanguage from "./settings";
 import { getLanguage } from "./languages";
+import { startsWithIgnoreCase } from "../utils";
 import { Message, Client } from 'whatsapp-web.js';
 import MessageCollector from "./MessageCollector";
+import { parseDate, isValidDate } from './userUtils';
 import * as PDFJS from "pdfjs-dist/legacy/build/pdf";
 import { searchFlights } from "../features/skyscanner";
-import { startsWithIgnoreCase, parseDate } from "../utils";
 import { getCountryCode, flightRegex, arLang } from "./userUtils";
 import { isCountryOrCodeValid, isDateFormatValid } from "./userUtils";
 import { handleIncomingMessage as handleIncomingMessageLanguage } from "./languages";
@@ -32,23 +33,25 @@ import { transcribeOpenAI } from "../providers/openai";
 // For deciding to ignore old messages
 import { botReadyTimestamp } from "../index";
 
-interface ConversationState {
-  stage: 'from' | 'to' | 'date';
-  from?: string;
-  to?: string;
-  date?: string;
+function createUniqueId(senderId: string): string {
+  return `user-${senderId}`;
 }
 
-// Handles message
-async function handleIncomingMessage(message: Message) {
-  const messageString = message.body.trim();
-  const conversationId = message.info.remoteJID;
+const conversations: { [key: string]: any } = {};
 
-  if (startsWithIgnoreCase(messageString, '.رحله')) {
+// Handles message
+async function handleIncomingMessage(message: Message, client: Client) {
+  const senderId = message.from;
+  const userUniqueId = createUniqueId(senderId);
+  const messageString = message.body.trim();
+  
+  if (messageString.startsWith(".رحله")) {
     if (messageString === '.رحله') {
-      conversations[conversationId] = { stage: 'from' };
+      // Begin interactive flight search
+      conversations[userUniqueId] = { stage: 'from', tries: 0, userId: senderId };
       await message.reply('من؟');
     } else {
+      // Direct flight search
       const messageParts = messageString.split(' ');
 
       if (messageParts.length === 6) {
@@ -67,39 +70,57 @@ async function handleIncomingMessage(message: Message) {
           await message.reply(flightResults);
         }
       } else {
-        await message.reply('يرجى إرسال الرسالة بالتنسيق التالي: .رحله من [المدينة المغادرة] إلى [المدينة الواصلة] بتاريخ [تاريخ الرحلة]');
+        await message.reply('يرجى إرسال الرسالة بالتنسيق التالي: .رحله من [مكان الانطلاق] إلى [مكان الوصول] بتاريخ [تاريخ الرحلة]');
       }
     }
-  } else {
-    const conversation = conversations[conversationId];
+  } else if (conversations[userUniqueId] && conversations[userUniqueId].userId === senderId) {
+    const currentStage = conversations[userUniqueId].stage;
+    const currentTries = conversations[userUniqueId].tries;
+    let validInput = false;
+    let errorMessage = '';
 
-    if (conversation) {
-      if (conversation.stage === 'from') {
-        conversation.from = messageString;
-        conversation.stage = 'to';
+    if (currentStage === 'from') {
+      const fromCode = getCountryCode(messageString);
+      if (fromCode) {
+        validInput = true;
+        conversations[userUniqueId].from = fromCode;
+        conversations[userUniqueId].stage = 'to';
         await message.reply('إلى؟');
-      } else if (conversation.stage === 'to') {
-        conversation.to = messageString;
-        conversation.stage = 'date';
-        await message.reply('أي تاريخ؟');
-      } else if (conversation.stage === 'date') {
-        conversation.date = messageString;
-        delete conversations[conversationId];
+      } else {
+        errorMessage = 'اسم الدولة أو المدينة غير صحيح. يرجى المحاولة مرة أخرى.';
+      }
+    } else if (currentStage === 'to') {
+      const toCode = getCountryCode(messageString);
+      if (toCode) {
+        validInput = true;
+        conversations[userUniqueId].to = toCode;
+        conversations[userUniqueId].stage = 'date';
+        await message.reply('بتاريخ؟');
+      } else {
+        errorMessage = 'اسم الدولة أو المدينة غير صحيح. يرجى المحاولة مرة أخرى.';
+      }
+    } else if (currentStage === 'date') {
+      const parsedDate = parseDate(messageString);
+      if (parsedDate) {
+        validInput = true;
+        const flightResults = await searchFlights(conversations[userUniqueId].from, conversations[userUniqueId].to, parsedDate.toISOString());
+        await message.reply(flightResults);
+        delete conversations[userUniqueId];
+      } else {
+        errorMessage = 'التاريخ غير صحيح. يرجى المحاولة مرة أخرى.';
+      }
+    }
 
-        const fromCode = getCountryCode(conversation.from);
-        const toCode = getCountryCode(conversation.to);
-        const parsedDate = parseDate(conversation.date);
-
-        if (!fromCode || !toCode || !parsedDate) {
-          await message.reply('المعلومات المدخلة غير صحيحة. يرجى التحقق من بيانات البحث والمحاولة مرة أخرى.');
-        } else {
-          const flightResults = await searchFlights(fromCode, toCode, parsedDate.toISOString());
-          await message.reply(flightResults);
-        }
+    if (!validInput) {
+      conversations[userUniqueId].tries++;
+      if (currentTries >= 2) {
+        delete conversations[userUniqueId];
+        await message.reply('تم إلغاء البحث بسبب تجاوز عدد المحاولات المسموح بها. يمكنك المحاولة مرة أخرى بإرسال: .رحله');
+      } else {
+        await message.reply(errorMessage);
       }
     }
   }
-
 
   if (message.hasMedia) {
     const media = await message.downloadMedia();
