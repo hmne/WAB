@@ -1,48 +1,19 @@
-# GPT + DALL-E + WhatsApp = AI Assistant 🚀
+اسم المشروع
 
-![Docker](https://github.com/askrella/whatsapp-chatgpt/actions/workflows/docker.yml/badge.svg)
-![Prettier](https://github.com/askrella/whatsapp-chatgpt/actions/workflows/prettier.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+مرحبًا بك في مشروعي! هذا البوت يوفر عددًا من الميزات الذكية والمفيدة التي يمكن استخدامها على منصة WhatsApp.
 
-[![Discord Invite](https://dcbadge.vercel.app/api/server/9VJaRXKwd3)](https://discord.gg/9VJaRXKwd3)
+ChatGPT
 
-This WhatsApp bot uses OpenAI's GPT and DALL-E 2 to respond to user inputs.
+ChatGPT هي ميزة الذكاء الاصطناعي التي تتيح للمستخدمين التحدث إلى البوت بشكل طبيعي، حيث يتم تحليل الرسائل التي يتم استلامها وتوليدها بشكل تلقائي باستخدام تقنيات الذكاء الاصطناعي المتطورة. يمكن استخدام ChatGPT عندما يتلقى البوت رسالة تبدأ بكلمة "بوت".
 
-You can talk to the bot in voice messages, the bot will transcribe and respond. :robot:
+DALL-E
 
-<p align="center">
-<img width="904" alt="Whatsapp ChatGPT" src="https://user-images.githubusercontent.com/6507938/220681521-17a12a41-44df-4d51-b491-f6a83871fc9e.png">
-</p>
+DALL-E هي ميزة التصميم الاصطناعي التي تتيح للمستخدمين تصميم الصور بشكل تلقائي باستخدام الذكاء الاصطناعي. يمكن استخدام DALL-E عندما يتلقى البوت رسالة تبدأ بكلمة "رسام".
 
-## Requirements
+Skyscanner
 
--   Node.js (18 or newer)
--   A recent version of npm
--   An [OpenAI API key](https://beta.openai.com/signup)
--   A WhatsApp account
+Skyscanner هي ميزة البحث عن الرحلات التي تتيح للمستخدمين البحث عن الرحلات الجوية وحجوزات الفنادق بسهولة. يمكن استخدام Skyscanner عندما يتلقى البوت رسالة تبدأ بكلمة ".رحله".
 
-## Documentation
+OCR
 
-In the documentation you can find more information about how to install, configure and use this bot.
-
-<span style="font-size: 1.4rem;">➡️ https://askrella.github.io/whatsapp-chatgpt</span>
-
-## Disclaimer
-
-The operations performed by this bot are not free. You will be charged by OpenAI for each request you make.
-
-This bot uses Puppeteer to run a real instance of Whatsapp Web to avoid getting blocked.
-
-NOTE: We can't guarantee that you won't be blocked using this method, although it does work. WhatsApp does not allow bots or unofficial clients on its platform, so this should not be considered completely safe.
-
-## Contributors
-
-<a href="https://github.com/askrella/whatsapp-chatgpt/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=askrella/whatsapp-chatgpt" />
-</a>
-
-## Used libraries
-
--   https://github.com/transitive-bullshit/chatgpt-api
--   https://github.com/pedroslopez/whatsapp-web.js
--   https://github.com/askrella/speech-rest-api
+OCR هي ميزة التعرف الضوئي على الأحرف، والتي تتيح للمستخدمين تحويل النص الموجود في الصور أو ملفات PDF إلى نص قابل للتحرير. يمكن استخدام OCR عندما يتلقى البوت رسالة تحتوي على وسائط، وتبدأ بكلمة "بوت حلل".
